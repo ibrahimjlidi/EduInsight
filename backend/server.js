@@ -13,12 +13,23 @@ const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http:/
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+app.use((req, _res, next) => {
+  console.log('[CORS] request origin =', req.headers.origin || 'none', 'path =', req.path);
+  next();
+});
+
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      console.warn('[CORS] blocked origin:', origin);
+      return callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 const connectDB = async () => {
