@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173,https://edu-insight.vercel.app')
   .split(',')
-  .map((origin) => origin.trim())
+  .map((origin) => origin.trim().replace(/\/$/, ''))
   .filter(Boolean);
 
 app.use((req, _res, next) => {
@@ -22,7 +22,8 @@ app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
+      const originNormalized = origin.replace(/\/$/, '');
+      if (allowedOrigins.includes(originNormalized)) return callback(null, true);
       console.warn('[CORS] blocked origin:', origin);
       return callback(new Error('Not allowed by CORS'));
     },
