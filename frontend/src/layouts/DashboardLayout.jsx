@@ -7,6 +7,7 @@ const navItems = [
   { label: 'Courses', to: '/courses', icon: BookOpen },
   { label: 'Quizzes', to: '/quiz', icon: PenTool },
   { label: 'Students', to: '/students', icon: Users },
+  { label: 'Docs', to: '/docs', icon: BookOpen },
 ];
 
 const DashboardLayout = () => {
