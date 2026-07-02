@@ -40,7 +40,15 @@ const Docs = () => {
 
           <h3 className="text-xl font-semibold text-white">2.2 routes/authRoutes.js</h3>
           <p>This file maps API paths to controller functions:</p>
-          <pre className="rounded-xl bg-slate-950 p-4 text-sm text-slate-300">import express from 'express';<br />import { register, login } from '../controllers/authController.js';<br /><br />const router = express.Router();<br /><br />router.post('/register', register);<br />router.post('/login', login);<br /><br />export default router;</pre>
+          <pre className="rounded-xl bg-slate-950 p-4 text-sm text-slate-300">{`import express from 'express';
+import { register, login } from '../controllers/authController.js';
+
+const router = express.Router();
+
+router.post('/register', register);
+router.post('/login', login);
+
+export default router;`}</pre>
           <p>When the frontend calls <code>/api/auth/login</code>, Express passes the request to <code>login</code> in the controller.</p>
 
           <h3 className="text-xl font-semibold text-white">2.3 controllers/authController.js</h3>
