@@ -13,16 +13,18 @@ const Docs = () => {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <img
-                className="h-52 w-full rounded-3xl border border-slate-200 object-cover shadow-sm"
-                src="https://via.placeholder.com/640x360/eff6ff/0f172a?text=Dashboard+Preview"
-                alt="Dashboard preview screenshot"
-              />
-              <img
-                className="h-52 w-full rounded-3xl border border-slate-200 object-cover shadow-sm"
-                src="https://via.placeholder.com/640x360/f8f3ff/0f172a?text=Login+Page+Preview"
-                alt="Login page preview screenshot"
-              />
+              <div className="h-52 w-full overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+                <svg className="h-full w-full" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dashboard preview">
+                  <rect width="100%" height="100%" fill="#eff6ff" />
+                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#0f172a" fontSize="20">Dashboard Preview</text>
+                </svg>
+              </div>
+              <div className="h-52 w-full overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
+                <svg className="h-full w-full" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Login preview">
+                  <rect width="100%" height="100%" fill="#fff3ff" />
+                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#0f172a" fontSize="20">Login Page Preview</text>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -63,11 +65,12 @@ const Docs = () => {
             </div>
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
               <p className="text-sm uppercase tracking-[0.3em] text-slate-500">Screenshot</p>
-              <img
-                className="mt-4 w-full rounded-3xl border border-slate-200 object-cover"
-                src="https://via.placeholder.com/640x420/e0f2fe/0f172a?text=server.js+flow"
-                alt="server.js diagram"
-              />
+              <div className="mt-4 w-full overflow-hidden rounded-3xl border border-slate-200 bg-white">
+                <svg className="w-full" viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="server flow">
+                  <rect width="100%" height="100%" fill="#e0f2fe" />
+                  <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#0f172a" fontSize="18">server.js flow</text>
+                </svg>
+              </div>
             </div>
           </div>
 
@@ -75,7 +78,7 @@ const Docs = () => {
             <div className="space-y-4 text-slate-700">
               <h3 className="text-2xl font-semibold text-slate-900">2.2 routes/authRoutes.js</h3>
               <p>This file maps API paths to controller functions:</p>
-              <pre className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-900">
+                    <pre className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-900 overflow-auto">
 {`import express from 'express';
 import { register, login } from '../controllers/authController.js';
 
@@ -100,7 +103,7 @@ export default router;`}
           <div className="space-y-4 text-slate-700">
             <h3 className="text-2xl font-semibold text-slate-900">2.4 models/User.js</h3>
             <p>This model defines the user schema and hashes passwords before saving:</p>
-            <pre className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-900">
+            <pre className="rounded-3xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-900 overflow-auto">
 {`const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true, lowercase: true },
